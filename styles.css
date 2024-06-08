@@ -39,24 +39,8 @@ body {
     cursor: pointer;
 }
 
-#button1 {
-    background-color: red;
-}
-
-#button2 {
-    background-color: green;
-}
-
-#button3 {
-    background-color: blue;
-}
-
-#button4 {
-    background-color: yellow;
-}
-
 .game-button.active {
-    box-shadow: 0 0 20px white;
+    background-color: yellow;
 }
 
 #game-over {
