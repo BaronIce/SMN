@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+}
+
+.scoreboard {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+}
+
+.score {
+    margin-bottom: 10px;
+}
+
+.timer {
+    color: white;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    grid-gap: 20px;
+}
+
+.game-button {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    border: none;
+    cursor: pointer;
+}
+
+#button1 {
+    background-color: red;
+}
+
+#button2 {
+    background-color: green;
+}
+
+#button3 {
+    background-color: blue;
+}
+
+#button4 {
+    background-color: yellow;
+}
+
+.game-button.active {
+    box-shadow: 0 0 20px white;
+}
+
+#game-over {
+    color: white;
+    font-size: 2em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
