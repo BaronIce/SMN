@@ -27,13 +27,13 @@ body {
 
 .buttons {
     display: grid;
-    grid-template-columns: repeat(2, 150px); /* Zwiększona szerokość kolumn */
+    grid-template-columns: repeat(2, 150px);
     grid-gap: 20px;
 }
 
 .game-button {
-    width: 150px; /* Zwiększona szerokość */
-    height: 150px; /* Zwiększona wysokość */
+    width: 150px;
+    height: 150px;
     background-color: grey;
     border: none;
     cursor: pointer;
@@ -54,4 +54,15 @@ body {
 
 .hidden {
     display: none;
+}
+
+/* Nowe style dla poziomu i progu */
+#current-level {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+#next-threshold {
+    font-size: 1em;
+    margin-top: 5px;
 }
