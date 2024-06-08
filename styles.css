@@ -13,7 +13,6 @@ body {
     top: 20px;
     right: 20px;
     color: white;
-    text-align: right;
 }
 
 .score {
@@ -55,15 +54,4 @@ body {
 
 .hidden {
     display: none;
-}
-
-/* Nowe style dla poziomu i progu */
-#current-level {
-    font-size: 1.2em;
-    margin-top: 10px;
-}
-
-#next-threshold {
-    font-size: 1em;
-    margin-top: 5px;
 }
