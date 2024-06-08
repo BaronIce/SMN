@@ -11,6 +11,28 @@ let highScore = 0;
 let activeButton;
 let previousButton = null; // Przechowuje poprzednio aktywny przycisk
 let gameActive = true;
+let currentLevel = 'easy'; // Startujemy od poziomu 'easy'
+
+const levelSettings = {
+    easy: {
+        threshold: 30,
+        initialTime: 1.0000,
+        decrementTime: 0.5000,
+        nextLevel: 'medium'
+    },
+    medium: {
+        threshold: 30,
+        initialTime: 1.0000,
+        decrementTime: 0.4000,
+        nextLevel: 'hard'
+    },
+    hard: {
+        threshold: 30,
+        initialTime: 1.0000,
+        decrementTime: 0.3000,
+        nextLevel: null // Ostatni poziom
+    }
+};
 
 function startGame() {
     resetGame();
@@ -21,10 +43,15 @@ function startGame() {
 }
 
 function resetGame() {
-    gameTime = 1.0000; // Pierwsze odliczanie zaczyna się od 1 sekundy
+    currentLevel = 'easy'; // Resetujemy do poziomu 'easy'
+    setLevelSettings();
     currentScore = 0;
     updateScore();
     updateTimerDisplay();
+}
+
+function setLevelSettings() {
+    gameTime = levelSettings[currentLevel].initialTime;
 }
 
 function updateTimer() {
@@ -47,6 +74,16 @@ function updateScore() {
     highScoreElement.textContent = `High Score: ${highScore}`;
 }
 
+function checkLevelUp() {
+    if (currentScore >= levelSettings[currentLevel].threshold) {
+        if (levelSettings[currentLevel].nextLevel) {
+            currentLevel = levelSettings[currentLevel].nextLevel;
+            setLevelSettings();
+            alert(`Level Up! Welcome to ${currentLevel} level!`);
+        }
+    }
+}
+
 function nextRound() {
     if (activeButton) {
         activeButton.classList.remove('active');
@@ -65,8 +102,9 @@ buttons.forEach(button => {
         if (gameActive) {
             if (button === activeButton) {
                 currentScore++;
-                gameTime = 0.5000; // Kolejne odliczania zaczynają się od 0,5 sekundy
+                gameTime = levelSettings[currentLevel].decrementTime;
                 updateScore();
+                checkLevelUp();
                 nextRound();
             } else {
                 endGame();
