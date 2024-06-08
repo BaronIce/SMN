@@ -3,6 +3,8 @@ let timerElement = document.getElementById('timer');
 let currentScoreElement = document.getElementById('current-score');
 let highScoreElement = document.getElementById('high-score');
 let gameOverElement = document.getElementById('game-over');
+let currentLevelElement = document.getElementById('current-level');
+let nextThresholdElement = document.getElementById('next-threshold');
 
 let interval;
 let gameTime = 1.0000; // Pierwsze odliczanie zaczyna się od 1 sekundy
@@ -48,6 +50,7 @@ function resetGame() {
     currentScore = 0;
     updateScore();
     updateTimerDisplay();
+    updateLevelDisplay();
 }
 
 function setLevelSettings() {
@@ -74,11 +77,25 @@ function updateScore() {
     highScoreElement.textContent = `High Score: ${highScore}`;
 }
 
+function updateLevelDisplay() {
+    currentLevelElement.textContent = `Level: ${capitalizeFirstLetter(currentLevel)}`;
+    if (levelSettings[currentLevel].nextLevel) {
+        nextThresholdElement.textContent = `Next Level at: ${levelSettings[currentLevel].threshold} points`;
+    } else {
+        nextThresholdElement.textContent = `Max Level Reached`;
+    }
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function checkLevelUp() {
     if (currentScore >= levelSettings[currentLevel].threshold) {
         if (levelSettings[currentLevel].nextLevel) {
             currentLevel = levelSettings[currentLevel].nextLevel;
             setLevelSettings();
+            updateLevelDisplay();
             alert(`Level Up! Welcome to ${currentLevel} level!`);
         }
     }
