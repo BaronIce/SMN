@@ -27,13 +27,13 @@ body {
 
 .buttons {
     display: grid;
-    grid-template-columns: repeat(2, 100px);
+    grid-template-columns: repeat(2, 150px); /* Zwiększona szerokość kolumn */
     grid-gap: 20px;
 }
 
 .game-button {
-    width: 100px;
-    height: 100px;
+    width: 150px; /* Zwiększona szerokość */
+    height: 150px; /* Zwiększona wysokość */
     background-color: grey;
     border: none;
     cursor: pointer;
