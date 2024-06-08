@@ -13,6 +13,7 @@ body {
     top: 20px;
     right: 20px;
     color: white;
+    text-align: right;
 }
 
 .score {
